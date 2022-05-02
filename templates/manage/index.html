@@ -1,0 +1,100 @@
+{% extends 'manage/homebase.html' %}
+{% load static %}
+
+
+
+{% block content %}
+
+<head>
+  <style>
+    body, html {
+      height: 100%;
+      font-family: serif;
+    }
+    .bg {
+      /* The image used */
+      background-image:linear-gradient( rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5)100%), url("https://cdn.pixabay.com/photo/2019/10/15/12/04/office-4551450_960_720.jpg");
+      background-color: #cccccc;
+      /* Full height */
+      height: 100%;
+    
+      /* Center and scale the image nicely */
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  </style>
+    </head>
+
+<body>
+
+  <div class="bg">
+    <div style="width:50%; margin:auto; ">
+      <p class="py-5 text-center"></p>
+      <h1 class="text-light" style="text-align:center;">Halls And Labs Management System </h1>
+      <p class="text-light">The halls and laboratories management system provides knowledge of the halls now available and reserved in addition to a special schedule for each hall with the possibility of modification, deletion and printing of the entire schedule for easy management of everything related to the department and in the best way with the ability to</p>
+      <div style="text-align:center;"><a href="/adminlogin" class="btn btn-danger text-light">Login Now</a>
+    
+    </div>
+
+  </div>
+
+
+</body>
+
+{% comment %} <head>
+  <style media="screen">
+    .jumbotron {
+      margin-top: 0px;
+      margin-bottom: 0px;
+      background-size: cover;
+      background-color: #337AB7;
+      background-repeat: no-repeat;
+    }
+
+    .jumbotron h5,
+    h3 {
+      text-align: center;
+    }
+
+
+    .alert {
+      margin: 0px;
+    }
+
+
+
+    .glow {
+      font-size: 50px;
+      color: white;
+      text-align: center;
+      -webkit-animation: glow 1s ease-in-out infinite alternate;
+      -moz-animation: glow 1s ease-in-out infinite alternate;
+      animation: glow 1s ease-in-out infinite alternate;
+    }
+
+    @-webkit-keyframes glow {
+      from {
+        text-shadow: 0 0 10px #eeeeee, 0 0 20px #000000, 0 0 30px #000000, 0 0 40px #000000, 0 0 50px #9554b3, 0 0 60px #9554b3, 0 0 70px #9554b3;
+      }
+
+      to {
+        text-shadow: 0 0 20px #eeeeee, 0 0 30px #fa2d2d, 0 0 40px #fa2d2d, 0 0 50px #fa2d2d, 0 0 60px #fa2d2d, 0 0 70px #fa2d2d, 0 0 80px #fa2d2d;
+      }
+    }
+  </style>
+</head>
+<br>
+<br>
+
+<div class="jumbotron" style="margin-bottom: 0px;margin-top: 0px; background-color: #337AB7;">
+  <br>
+  <h5 class="display-3 glow">Halls and Laboratories Management System</h5>
+
+</div> {% endcomment %}
+
+
+
+
+
+{% endblock content %}

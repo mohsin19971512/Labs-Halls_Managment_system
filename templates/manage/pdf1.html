@@ -1,0 +1,134 @@
+{% block content %}
+  {%load static%}
+
+<head>
+
+  <link
+    href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+    rel="stylesheet"
+    id="bootstrap-css"
+  />
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+    .row {
+      margin: 100px;
+    }
+  </style>
+</head>
+
+<div class="container ">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h6 class="panel-title text-uppercase">{{halls.name}}</h6>
+       <p class="mt-2 ">Supervisor : {{halls.supervisor}}</p>
+    </div>
+    <div class="container">
+      <div class="timetable-img text-center">
+        <img src="img/content/timetable.png" alt="" />
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered text-center">
+
+            <div class="table-responsive">
+              <table class="table table-bordered text-center">
+                <thead>
+                
+                  <tr class="bg-light-gray ">
+                    <th class="text-uppercase text-center">Day</th>
+                    <th class="align-middle  text-center">08:30 - 10:30</th>
+                    <th class="align-middle text-center">10:30 - 12:30</th>
+                    <th class="align-middle text-center">12:30 - 02:00</th>
+                    <th class="align-middle text-center">Edit</th>
+
+                  </tr>
+                </thead> 
+                <tbody>
+                  {% for i in halls.get_days %}
+                  <tr>
+                    <th class=" text-center p-5">{{i.day}}</th>
+                    {% if i.lecture_one %}
+                    <td>
+                        <span
+                          >{{i.lecture_one}}</span
+                        >
+                        <div class="margin-10px-top font-size14"> {{i.start_lect_one}} - {{i.end_lect_one}}</div>
+                        <div class="font-size13 text-light-gray">by {{i.lect_one_given_by}} </div>
+                      </td>
+                      {% else %}
+                      <td>
+                        <span
+                          ></span
+                        >
+                        <div class="margin-30px-top font-size14">   -   </div>
+                        <div class="font-size13 text-light-gray"></div>
+                      </td>
+                    {% endif %}
+                    {% if i.lecture_tow %}
+                    <td>
+                        <span
+                          >{{i.lecture_tow}}</span
+                        >
+                        <div class="margin-10px-top font-size14">{{i.start_lect_tow}}-{{i.end_lect_tow}}</div>
+                        <div class="font-size13 text-light-gray">by {{i.lect_tow_given_by}}</div>
+                      </td>
+                      {% else %}
+                      <td>
+                        <span
+                          ></span
+                        >
+                        <div class="margin-10px-top font-size14">   -   </div>
+                        <div class="font-size13 text-light-gray"></div>
+                      </td>
+
+                    {% endif %}
+
+                    {% if i.lecture_three %}
+                    <td>
+                        <span
+                          >{{i.lecture_three}}</span
+                        >
+                        <div class="margin-10px-top font-size14">{{i.start_lect_three}}-{{i.end_lect_three}}</div>
+                        <div class="font-size13 text-light-gray">by {{i.lect_three_given_by}}</div>
+                      </td>
+                      {% else %}
+                      <td>
+                        <span
+                          >            </span
+                        >
+                        <div class="margin-10px-top font-size14">   -  </div>
+                        <div class="font-size13 text-light-gray">    </div>
+                      </td>
+                      
+
+                    {% endif %}
+                    
+
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!--
+
+
+  
+  -->
+</div>
+
+{% endblock content %}

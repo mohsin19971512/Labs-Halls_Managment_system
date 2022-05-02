@@ -1,0 +1,118 @@
+{% extends 'manage/admin_base.html' %}
+{% load static %}
+{% block content %}
+{%include 'manage/admin_dashboard_cards.html'%}
+
+<br><br><br>
+<div class="container">
+  <div class="row">
+
+
+    <div class="panel col-md-5" style="margin-left:5%;">
+      <div class="panel-heading" style="text-align:center;">
+        <h6 class="panel-title">Laboratories occupied now :  {{no_of_unavaliable_lab_now}}</h6>
+      </div>
+      <table class="table table-hover bg-dark table-striped" id="dev-table">
+        <thead class="thead-dark">
+          <tr>
+            <th>Lab</th>
+            <th>status</th>
+          </tr>
+        </thead>
+        
+        {% for p in lab_qs %}
+        <tr>
+          <td> <a style="text-decoration: none; color: inherit;" href="{% url 'lab_details' p.id %}" >{{p.name}}</a> </td>          
+
+          <td> <span class="badge bg-danger">occupied</span></td> 
+        </tr> 
+        {% endfor %}
+        
+      </table>
+    </div>
+
+    <div class="panel  col-md-5" style="margin-left:2%;">
+      <div class="panel-heading" style="text-align:center;">
+        <h6 class="panel-title">Halls occupied now  : {{no_of_avaliable_hall_now}}</h6>
+      </div>
+      <table class="table table-hover table-striped" id="dev-table">
+        <thead class="thead-dark">
+          <tr>
+            <th>Hall</th>
+            <th>Status</th>
+            
+
+          </tr>
+        </thead>
+        {% for d in hall_qs %}
+        <tr>
+          <td><a style="text-decoration: none; color: inherit;" href="{% url 'hall_detail' d.id %}" >{{d.name}}</a> </td>
+          
+          <td> <span class="badge bg-danger">occupied</span></td>
+          
+        </tr>
+        {% endfor %}
+        
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container">
+  <div class="row">
+   
+    <div class="panel  col-md-5" style="margin-left:5%;">
+      <div class="panel-heading" style="text-align:center;">
+        <h6 class="panel-title">Laboratories available now : {{available_lab}}</h6>
+      </div>
+      <table class="table table-hover table-striped" id="dev-table">
+        <thead class="thead-dark">
+          <tr>
+            <th>Lab</th>
+            <th>status</th>
+            
+
+          </tr>
+        </thead>
+        
+        {% for p in ava_lab_qs %}
+        <tr>
+                        
+          <td> <a style="text-decoration: none; color: inherit;" href="{% url 'lab_details' p.id %}" >{{p.name}}</a> </td>
+          <td> <span class="badge bg-success">Available</span></td> 
+        </tr> 
+        {% endfor %}
+        
+      </table>
+    </div>
+
+    <div class="panel  col-md-5" style="margin-left:2%;">
+      <div class="panel-heading" style="text-align:center;">
+        <h6 class="panel-title">Halls available now  : {{available_hall}}</h6>
+      </div>
+      <table class="table table-hover table-striped" id="dev-table">
+        <thead class="thead-dark">
+          <tr>
+            <th>Hall</th>
+            <th>Status</th>
+            
+
+          </tr>
+        </thead>
+        {% for d in ava_hall_qs %}
+        <tr>
+          <td> <a style="text-decoration: none; color: inherit;" href="{% url 'hall_detail' d.id %}" >{{d.name}}</a> </td>          
+          <td> <span class="badge bg-success">Available</span></td>
+          
+        </tr>
+        {% endfor %}
+        
+      </table>
+    </div>
+
+  </div>
+</div>
+
+{% endblock content %}
