@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-TIME_INPUT_FORMATS = ['%I:%M']
+TIME_INPUT_FORMATS = ['%I:%M %p']
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
@@ -155,13 +155,13 @@ EMAIL_RECEIVING_USER = ['to@gmail.com'] # email on which you will receive messag
 
 JAZZMIN_SETTINGS = {
     # title of the window (Will default to current_admin_site.site_title if absent or None)
-    "site_title": "Library Admin",
+    "site_title": "Halls and labs Admin",
 
     # Title on the login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
-    "site_header": "Library",
+    "site_header": "Halls And Labs Management System",
 
     # Title on the brand (19 chars max) (defaults to current_admin_site.site_header if absent or None)
-    "site_brand": "Library",
+    "site_brand": "Computer Science ",
 
     # Logo to use for your site, must be present in static files, used for brand on top left
     #"site_logo": "books/img/logo.png",
@@ -173,10 +173,10 @@ JAZZMIN_SETTINGS = {
     "site_icon": None,
 
     # Welcome text on the login screen
-    "welcome_sign": "Welcome to the library",
+    "welcome_sign": "Welcome to the Halls And labs M.S",
 
     # Copyright on the footer
-    "copyright": "Acme Library Ltd",
+    "copyright": "",
 
     # The model admin to search from the search bar, search bar omitted if excluded
     "search_model": "auth.User",
@@ -283,7 +283,7 @@ JAZZMIN_SETTINGS = {
     "changeform_format_overrides": {"auth.user": "collapsible", "auth.group": "vertical_tabs"},
     # Add a language dropdown into the admin
     #"language_chooser": True,
-    "show_ui_builder" :True
+    "show_ui_builder" :False
 }
 
 JAZZMIN_UI_TWEAKS = {

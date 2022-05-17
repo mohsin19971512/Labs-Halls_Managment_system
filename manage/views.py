@@ -97,7 +97,7 @@ def afterlogin_view(request):
     
 
 #---------------------------------------------------------------------------------
-#------------------------ ADMIN RELATED VIEWS START ------------------------------
+#------------------------ admin_dashboard_view ------------------------------
 #---------------------------------------------------------------------------------
 @login_required(login_url='adminlogin')
 @user_passes_test(is_admin)
@@ -108,7 +108,7 @@ def admin_dashboard_view(request):
     halls=Hall.objects.all().count()
 
     now = datetime.now()
-    check_time =now.strftime("%I:%M")  #strftime("%I:%M %p")
+    check_time =now.strftime("%I:%M %p")  #strftime("%I:%M %p")
     
     check_day =now.strftime("%A")
 
@@ -120,64 +120,59 @@ def admin_dashboard_view(request):
     new_qs = []
     if now.strftime("%p")=="PM":
         print("true")
-        if check_time > time(10,30).strftime("%I:%M") and check_time < time(12,30).strftime("%I:%M")  :
+        if check_time >= time(10,30).strftime("%I:%M") and check_time < time(12,30).strftime("%I:%M")  :
             busy_time2 = Day.objects.filter(start_lect_tow__lte=check_time ,day = check_day)
             new_qs = busy_time2
             print("busy_time2",busy_time2)
 
-        if  check_time > time(12,30).strftime("%I:%M") :
+        if  check_time >= time(12,30).strftime("%I:%M") :
             busy_time3 = Day.objects.filter(end_lect_three__lte=time(2,00).strftime("%I:%M") ,day = check_day)
-            #busy_time3 = Day.objects.filter(Q(start_lect_three>check_time and end_lect_three<check_time))
             
             new_qs = busy_time3
             print("busy_time3",busy_time3)
             
-        if  check_time > time(1,00).strftime("%I:%M") and check_time < time(2,00).strftime("%I:%M") :
+        if  check_time >= time(1,00).strftime("%I:%M") and check_time < time(2,00).strftime("%I:%M") :
             busy_time3 = Day.objects.filter(start_lect_three__lte=check_time,day = check_day)
             new_qs = busy_time3
             print("busy_time3",busy_time3)
 
-        if check_time > time(10,30).strftime("%I:%M") and check_time < time(12,30).strftime("%I:%M") :
+        if check_time >= time(10,30).strftime("%I:%M") and check_time < time(12,30).strftime("%I:%M") :
             free_time2 = Day.objects.filter(start_lect_tow__isnull=True,day = check_day)
             free_qs = free_time2
             print("free_time2",free_time2)
             
-        if  check_time > time(12,30).strftime("%I:%M") :
+        if  check_time >= time(12,30).strftime("%I:%M") :
             free_time3 = Day.objects.filter(start_lect_three__isnull=True,day = check_day)
             free_qs = free_time3
             print("free_time3",free_time3)
             
-        if  check_time > time(1,00).strftime("%I:%M") and check_time < time(2,00).strftime("%I:%M"):
+        if  check_time >= time(1,00).strftime("%I:%M") and check_time < time(2,00).strftime("%I:%M"):
             free_time3 = Day.objects.filter(start_lect_three__isnull=True,day = check_day)
             free_qs = free_time3
             print("free_time3",free_time3)
 
     else :
         print("AM")
-        if check_time > time(8,30).strftime("%I:%M") and check_time < time(10,30).strftime("%I:%M"): 
+        if check_time >= time(8,30).strftime("%I:%M") and check_time < time(10,30).strftime("%I:%M"): 
             busy_time1 = Day.objects.filter(start_lect_one__isnull=False,start_lect_one__lte=check_time,end_lect_one__gte=check_time ,day = check_day)
             new_qs = busy_time1
             print("busy_time1",busy_time1)
-        if check_time > time(10,30).strftime("%I:%M") and check_time < time(12,30).strftime("%I:%M")  :
+        if check_time >= time(10,30).strftime("%I:%M") and check_time < time(12,30).strftime("%I:%M")  :
             busy_time2 = Day.objects.filter(start_lect_tow__lte=check_time,day = check_day)
             new_qs = busy_time2
             print("busy_time2",busy_time2)
 
 
-        if check_time > time(8,30).strftime("%I:%M") and check_time < time(10,30).strftime("%I:%M"): 
+        if check_time >= time(8,30).strftime("%I:%M") and check_time < time(10,30).strftime("%I:%M"): 
             free_time1 = Day.objects.filter(start_lect_one__isnull=True,day = check_day)
             free_qs = free_time1
             print("free_time1",free_time1)
-        if check_time > time(10,30).strftime("%I:%M") and check_time < time(12,30).strftime("%I:%M") :
+        if check_time >= time(10,30).strftime("%I:%M") and check_time < time(12,30).strftime("%I:%M") :
             free_time2 = Day.objects.filter(start_lect_tow__isnull=True,day = check_day)
             free_qs = free_time2
             print("free_time2",free_time2) 
-
-    #new_qs = busy_time1|busy_time2|busy_time3
-    #new_qs_2 = free_time1|free_time2|free_time3
     ava_hall_qs = []
     ava_lab_qs = []
-    print(ava_lab_qs)
      
     for i in new_qs:
         
@@ -185,7 +180,6 @@ def admin_dashboard_view(request):
         if h.exists():
             hall_qs.append(h.first())
         else :
-            print("Labro")
             
             l = Laboratorie.objects.filter(days = i)
             
@@ -200,13 +194,8 @@ def admin_dashboard_view(request):
 
                 
         else :
-            print("Labro")
             l = Laboratorie.objects.filter(days = j)
             ava_lab_qs.append(l.first())
-    print("check_time",check_time)
-    print("check_day",check_day)
-    
-    print("ava_lab_qs",Day.objects.filter(start_lect_three__lte=check_time).first().start_lect_three)
 
 
     mydict={
@@ -387,11 +376,23 @@ def admin_lab_view(request):
     return render(request,'manage/admin_lab.html')
 
 
+from random import randint
 
 @login_required(login_url='adminlogin')
 @user_passes_test(is_admin)
 def admin_view_lab_view(request):
     labs=Laboratorie.objects.all()
+    for lab in labs:
+        for _ in range(1000):
+            value1 = randint(0, lab.numbers_of_computer)
+            value2 = randint(0, lab.numbers_of_computer)  
+            if (value1+value2 == lab.numbers_of_computer):
+                lab.working_computers = value1
+                lab.computers_not_working = value2
+                print(value1+value2)
+                break
+            else :
+                pass
     return render(request,'manage/admin_view_labs.html',{'labs':labs})
 
 
