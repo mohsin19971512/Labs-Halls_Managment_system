@@ -9,10 +9,8 @@ class Hall(models.Model):
     name = models.CharField(verbose_name="Name",max_length=250)
     supervisor = models.CharField(verbose_name="supervisor",max_length=200,null=True,blank=True)
     seats = models.IntegerField(verbose_name="Seats",null=True)
-    data_show = models.BooleanField( verbose_name = "Data Show",default=True)
-    
+    data_show = models.BooleanField( verbose_name = "Data Show",default=True) 
     days = models.ManyToManyField('halls.Day')
-
     @property 
     def get_days(self):
         return self.days.all()
@@ -31,15 +29,19 @@ class Day(models.Model):
     lect_one_given_by = models.CharField(verbose_name="given by",max_length=50,null=True,blank=True)
     start_lect_one = models.TimeField(verbose_name="Start at",null=True,blank=True,auto_created=False)
     end_lect_one = models.TimeField(verbose_name="End at",null=True,blank=True,auto_created=False)
+    level_and_branch_1 = models.CharField(verbose_name="Branch/Level",null=True,blank=True,max_length=200)
+    
     lecture_tow = models.CharField(verbose_name="lecture tow",max_length=50,null=True,blank=True)
     lect_tow_given_by = models.CharField(verbose_name="given by",max_length=50,null=True,blank=True)
     start_lect_tow = models.TimeField(verbose_name="Start at",null=True,blank=True,auto_created=False)
     end_lect_tow = models.TimeField(verbose_name="End at",null=True,blank=True,auto_created=False)
+    level_and_branch_2 = models.CharField(verbose_name="Branch/Level",null=True,blank=True,max_length=200)
+    
     lecture_three = models.CharField(verbose_name="lecture three",max_length=50,null=True,blank=True,)
     lect_three_given_by = models.CharField(verbose_name="given by",max_length=50,null=True,blank=True)
     start_lect_three = models.TimeField(verbose_name="Start at",null=True,blank=True,auto_created=False)
     end_lect_three = models.TimeField(verbose_name="End at",null=True,blank=True,auto_created=False)
-
+    level_and_branch_3 = models.CharField(verbose_name="Branch/Level",null=True,blank=True,max_length=200)
 
     def __str__(self) -> str:
         return f'{self.day}'

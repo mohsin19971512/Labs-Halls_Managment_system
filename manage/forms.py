@@ -32,12 +32,12 @@ class TimeInput(forms.TimeInput):
     input_type = "time"
     
 class EditDay(forms.ModelForm): 
-    start_lect_one =forms.TimeField(widget=forms.TimeInput(attrs={'placeholder': '08:30 AM'}),required=False)
-    end_lect_one =forms.TimeField(widget=forms.TimeInput(attrs={'placeholder': '10:30 AM'}),required=False)
-    start_lect_tow =forms.TimeField(widget=forms.TimeInput(attrs={'placeholder': '10:30 AM'}),required=False)
-    end_lect_tow =forms.TimeField(widget=forms.TimeInput(attrs={'placeholder': '12:30 AM'}),required=False)
-    start_lect_three =forms.TimeField(widget=forms.TimeInput(attrs={'placeholder': '12:30 AM'}),required=False)
-    end_lect_three =forms.TimeField(widget=forms.TimeInput(attrs={'placeholder': '02:00 AM'}),required=False)
+    start_lect_one =forms.TimeField(widget=forms.TimeInput(attrs={'placeholder': '08:30 '}),required=False)
+    end_lect_one =forms.TimeField(widget=forms.TimeInput(attrs={'placeholder': '10:30 '}),required=False)
+    start_lect_tow =forms.TimeField(widget=forms.TimeInput(attrs={'placeholder': '10:30 '}),required=False)
+    end_lect_tow =forms.TimeField(widget=forms.TimeInput(attrs={'placeholder': '12:30 '}),required=False)
+    start_lect_three =forms.TimeField(widget=forms.TimeInput(attrs={'placeholder': '12:30 '}),required=False)
+    end_lect_three =forms.TimeField(widget=forms.TimeInput(attrs={'placeholder': '02:00 '}),required=False)
     
     class Meta:
         model = Day

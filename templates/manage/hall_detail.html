@@ -57,7 +57,10 @@
                     <th class=" text-center p-5">{{i.day}}</th>
                     {% if i.lecture_one %}
                     <td>
-                      <div class="margin-10px-top font-size14"> {{i.start_lect_one|date:"g:i"}} - {{i.end_lect_one|date:"g:i"}}</div>
+                      <div class="margin-10px-top font-size14"> {{i.level_and_branch_1}}</div> 
+
+                      <div class="margin-10px-top font-size14"> {{i.start_lect_one|date:"g:i"}} - {{i.end_lect_one|date:"g:i"}}</div> 
+
                         <span
                           >{{i.lecture_one}}</span
                         >
@@ -74,6 +77,8 @@
                     {% endif %}
                     {% if i.lecture_tow %}
                     <td>
+                      <div class="margin-10px-top font-size14"> {{i.level_and_branch_2}}</div> 
+
                       <div class="margin-10px-top font-size14">{{i.start_lect_tow|date:"g:i"}}-{{i.end_lect_tow|date:"g:i"}}</div>
                         <span
                           >{{i.lecture_tow}}</span
@@ -93,6 +98,8 @@
 
                     {% if i.lecture_three %}
                     <td  >
+                      <div class="margin-10px-top font-size14"> {{i.level_and_branch_3}}</div> 
+
                       <div class="margin-10px-top font-size14">{{i.start_lect_three|date:"g:i"}}-{{i.end_lect_three|date:"g:i"}}</div>
                         <span
                           >{{i.lecture_three}}</span

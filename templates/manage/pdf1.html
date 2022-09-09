@@ -1,17 +1,9 @@
-{% block content %}
-  {%load static%}
-
+<html>
 <head>
-
-  <link
-    href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
-    rel="stylesheet"
-    id="bootstrap-css"
-  />
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 
   <style media="screen">
+
     a:link {
       text-decoration: none;
     }
@@ -25,12 +17,12 @@
     }
   </style>
 </head>
-
+<body >
 <div class="container ">
   <div class="panel panel-primary">
-    <div class="panel-heading">
-      <h6 class="panel-title text-uppercase">{{halls.name}}</h6>
-       <p class="mt-2 ">Supervisor : {{halls.supervisor}}</p>
+    <div class="panel-heading mb-5">
+      <h6 class="panel-title text-uppercase" style="margin-left:330px; margin-bottom:-1px;">{{halls.name}}</h6>
+       <p class="mt-2 text-center " style="margin-left:320px;">Supervisor : {{halls.supervisor}}</p>
     </div>
     <div class="container">
       <div class="timetable-img text-center">
@@ -56,7 +48,7 @@
                   <tr>
                     <th class=" text-center p-5">{{i.day}}</th>
                     {% if i.lecture_one %}
-                    <td>
+                    <td style="margin-left:55px;">
                         <span
                           >{{i.lecture_one}}</span
                         >
@@ -64,7 +56,7 @@
                         <div class="font-size13 text-light-gray">by {{i.lect_one_given_by}} </div>
                       </td>
                       {% else %}
-                      <td>
+                      <td style="margin-left:55px;">
                         <span
                           ></span
                         >
@@ -73,7 +65,7 @@
                       </td>
                     {% endif %}
                     {% if i.lecture_tow %}
-                    <td>
+                    <td style="margin-left:55px;">
                         <span
                           >{{i.lecture_tow}}</span
                         >
@@ -81,7 +73,7 @@
                         <div class="font-size13 text-light-gray">by {{i.lect_tow_given_by}}</div>
                       </td>
                       {% else %}
-                      <td>
+                      <td style="margin-left:55px;">
                         <span
                           ></span
                         >
@@ -92,7 +84,7 @@
                     {% endif %}
 
                     {% if i.lecture_three %}
-                    <td>
+                    <td style="margin-left:55px;">
                         <span
                           >{{i.lecture_three}}</span
                         >
@@ -100,7 +92,7 @@
                         <div class="font-size13 text-light-gray">by {{i.lect_three_given_by}}</div>
                       </td>
                       {% else %}
-                      <td>
+                      <td style="margin-left:55px;">
                         <span
                           >            </span
                         >
@@ -129,5 +121,6 @@
   
   -->
 </div>
+</body>
 
-{% endblock content %}
+</html>

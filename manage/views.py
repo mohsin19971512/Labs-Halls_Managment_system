@@ -15,7 +15,6 @@ from django.db.models import Q
 from django.http import HttpResponse
 from django.template.loader import get_template
 from xhtml2pdf import pisa
-# Create your views here.
 
 
 def convert_to_pdf(request,pk):
@@ -108,7 +107,7 @@ def admin_dashboard_view(request):
     halls=Hall.objects.all().count()
 
     now = datetime.now()
-    check_time =now.strftime("%I:%M %p")  #strftime("%I:%M %p")
+    check_time =now.strftime("%I:%M")  #strftime("%I:%M %p")
     
     check_day =now.strftime("%A")
 
@@ -118,6 +117,8 @@ def admin_dashboard_view(request):
     lab_qs = []
     free_qs = []
     new_qs = []
+    print(check_time)
+    print(check_day)
     if now.strftime("%p")=="PM":
         print("true")
         if check_time >= time(10,30).strftime("%I:%M") and check_time < time(12,30).strftime("%I:%M")  :
@@ -126,12 +127,12 @@ def admin_dashboard_view(request):
             print("busy_time2",busy_time2)
 
         if  check_time >= time(12,30).strftime("%I:%M") :
-            busy_time3 = Day.objects.filter(end_lect_three__lte=time(2,00).strftime("%I:%M") ,day = check_day)
+            busy_time3 = Day.objects.filter(end_lect_three__lte=time(2,30).strftime("%I:%M") ,day = check_day)
             
             new_qs = busy_time3
             print("busy_time3",busy_time3)
             
-        if  check_time >= time(1,00).strftime("%I:%M") and check_time < time(2,00).strftime("%I:%M") :
+        if  check_time >= time(1,00).strftime("%I:%M") and check_time < time(2,30).strftime("%I:%M") :
             busy_time3 = Day.objects.filter(start_lect_three__lte=check_time,day = check_day)
             new_qs = busy_time3
             print("busy_time3",busy_time3)
@@ -146,7 +147,7 @@ def admin_dashboard_view(request):
             free_qs = free_time3
             print("free_time3",free_time3)
             
-        if  check_time >= time(1,00).strftime("%I:%M") and check_time < time(2,00).strftime("%I:%M"):
+        if  check_time >= time(1,00).strftime("%I:%M") and check_time < time(2,30).strftime("%I:%M"):
             free_time3 = Day.objects.filter(start_lect_three__isnull=True,day = check_day)
             free_qs = free_time3
             print("free_time3",free_time3)
@@ -177,25 +178,31 @@ def admin_dashboard_view(request):
     for i in new_qs:
         
         h = Hall.objects.filter(days = i)
+        l = Laboratorie.objects.filter(days = i)
+        
         if h.exists():
             hall_qs.append(h.first())
         else :
-            
-            l = Laboratorie.objects.filter(days = i)
-            
-            lab_qs.append(l.first())
+            if l.exists():
+                lab_qs.append(l.first())
+            else:
+                pass
 
     for j in free_qs:
         
         h = Hall.objects.filter(days = j)
+        l = Laboratorie.objects.filter(days = j)
         
         if h.exists():
             ava_hall_qs.append(h.first())
 
                 
         else :
-            l = Laboratorie.objects.filter(days = j)
-            ava_lab_qs.append(l.first())
+            if l.exists():
+            #l = Laboratorie.objects.filter(days = j)
+                ava_lab_qs.append(l.first())
+            else:
+                pass
 
 
     mydict={

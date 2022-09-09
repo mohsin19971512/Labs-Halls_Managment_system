@@ -80,7 +80,7 @@
         {% for p in ava_lab_qs %}
         <tr>
                         
-          <td> <a style="text-decoration: none; color: inherit;" href="{% url 'lab_details' p.id %}" >{{p.name}}</a> </td>
+          <td> <a style="text-decoration: none; color: inherit;" href="{% url 'lab_details' p.id %}" >{{p.name }} </a> </td>
           <td> <span class="badge bg-success">Available</span></td> 
         </tr> 
         {% endfor %}

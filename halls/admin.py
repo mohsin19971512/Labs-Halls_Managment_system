@@ -14,7 +14,7 @@ admin.site.register(Day) """
 @admin.register(Day)
 class OriginAdmin2(admin.ModelAdmin):
     list_display = ('day', 'lecture_one','lect_one_given_by','start_lect_one','end_lect_one','lecture_tow','lect_tow_given_by','start_lect_tow','end_lect_tow','lecture_three','lect_three_given_by','start_lect_three','end_lect_three')
-    fields = ('day', 'lecture_one','lect_one_given_by','start_lect_one','end_lect_one','lecture_tow','lect_tow_given_by','start_lect_tow','end_lect_tow','lecture_three','lect_three_given_by','start_lect_three','end_lect_three')
+    fields = ('day', 'lecture_one','lect_one_given_by','start_lect_one','end_lect_one','level_and_branch_1','lecture_tow','lect_tow_given_by','start_lect_tow','end_lect_tow','level_and_branch_2','lecture_three','lect_three_given_by','start_lect_three','end_lect_three','level_and_branch_3')
     search_fields = ('day', 'lecture_one','lect_one_given_by','start_lect_one','end_lect_one','lecture_tow','lect_tow_given_by','start_lect_tow','end_lect_tow','lecture_three','lect_three_given_by','start_lect_three','end_lect_three')
     #list_filter = ()
 
